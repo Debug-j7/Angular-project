@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { UserAuthComponent } from './user-auth/user-auth.component';
 import { UserInscComponent } from './user-insc/user-insc.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { NewEntreeComponent } from './new-entree/new-entree.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserAuthComponent,
-    UserInscComponent
+    UserInscComponent,
+    NewEntreeComponent
   ],
   imports: [
     BrowserModule,
