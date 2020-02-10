@@ -4,7 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 @Component({
   selector: 'app-user-insc',
   templateUrl: './user-insc.component.html',
-  styleUrls: ['./user-auth.component.css',
+  styleUrls: ['./user-insc.component.css',
     '../../assets/bootstrap/css/bootstrap.min.css',
     '../../assets/bootstrap/css/font-awesome.min.css']
 })
