@@ -9,6 +9,11 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { NewEntreeComponent } from './new-entree/new-entree.component';
 import { HomeComponent } from './home/home.component';
 import { EntreesComponent } from './entrees/entrees.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const appRoutes: Routes = [
+  { path : '', component : HomeComponent },
+];
 
 @NgModule({
   declarations: [
@@ -22,7 +27,8 @@ import { EntreesComponent } from './entrees/entrees.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forChild(appRoutes),
   ],
   providers: [],
   bootstrap: [AppComponent]

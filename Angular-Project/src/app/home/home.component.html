@@ -1,142 +1,123 @@
-<div class="container">
-  <section class="content-header">
-    <div class="container-fluid">
-
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1>Home</h1>
-        </div>
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Exercices courants</li>
-          </ol>
-        </div>
+<div class="row">
+  <div class="col-lg-offset-1 col-12 float-right">
+    <h1>Home</h1>
+    <div class="card" *ngIf="exercices.length != 0">
+      <div class="card-header">
+        <div class="card-header-tabs"></div>
+        <div class="card-title"><h2 class="text-2">Exercice {{ exercices[index].Motif }}</h2></div>
       </div>
-    </div><!-- /.container-fluid -->
-  </section>
-
-  <!-- Main content -->
-  <section class="content">
-    <div class="container">
-      <!-- Default box -->
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Exercice {{ exercices[index].Motif }}</h3>
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fas fa-times"></i></button>
-          </div>
-        </div>
-
-        <div class="card-body">
-          <button class="btn btn-primary button-nav float-right" (click)="detailler(index)">Afficher details</button>
-          <div class="row">
-            <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
-
-              <div class="row">
-                <div class="col-12 col-sm-4">
-                  <div class="info-box bg-light">
-                    <div class="info-box-content">
-                      <span class="info-box-text text-center text-muted">Date de debut</span>
-                      <span class="info-box-number text-center text-muted mb-0">{{ exercices[index].dateDebut }}</span>
+      <div class="card-body">
+        <div class="inner-content">
+          <div class="container">
+            <div class="outter-wp">
+              <!--custom-widgets-->
+              <div class="custom-widgets">
+                <div class="row-one">
+                  <div class="col-md-3 widget">
+                    <div class="stats-left ">
+                      <h4>Begin</h4>
+                      <h5> {{ exercices[index].dateDebut }}</h5>
                     </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-4">
-                  <div class="info-box bg-light">
-                    <div class="info-box-content">
-                      <span class="info-box-text text-center text-muted">Date de fin</span>
-                      <span class="info-box-number text-center text-muted mb-0">{{ exercices[index].dateFin }}</span>
+                    <div class="stats-right">
+                      <label></label>
                     </div>
+                    <div class="clearfix"> </div>
                   </div>
-                </div>
-
-                <div class="col-12 col-sm-4">
-                  <div class="info-box bg-light">
-                    <div class="info-box-content">
-                      <span class="info-box-text text-center text-muted">Date du jour</span>
-                      <span class="info-box-number text-center text-muted mb-0">{{ exercices[index].dateDay }}</span>
+                  <div class="col-md-3 widget states-mdl">
+                    <div class="stats-left">
+                      <h4>Today</h4>
+                      <h5>{{ dateDay }}</h5>
                     </div>
-                  </div>
-                </div>
-
-                <div class="col-12 col-sm-4">
-                  <div class="info-box bg-light">
-                    <div class="info-box-content">
-                      <span class="info-box-text text-center text-muted">Montant budgetaire estimé</span>
-                      <span class="info-box-number text-center text-muted mb-0">2300</span>
+                    <div class="stats-right">
+                      <label></label>
                     </div>
+                    <div class="clearfix"> </div>
                   </div>
-                </div>
-                <div class="col-12 col-sm-4">
-                  <div class="info-box bg-light">
-                    <div class="info-box-content">
-                      <span class="info-box-text text-center text-muted">Total entrées</span>
-                      <span class="info-box-number text-center text-muted mb-0">2000</span>
+                  <div class="col-md-3 widget states-thrd">
+                    <div class="stats-left">
+                      <h4>End</h4>
+                      <h5>{{ exercices[index].dateFin }}</h5>
                     </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-4">
-                  <div class="info-box bg-light">
-                    <div class="info-box-content">
-                      <span class="info-box-text text-center text-muted">Total dépenses</span>
-                      <span class="info-box-number text-center text-muted mb-0">20 </span>
+                    <div class="stats-right">
+                      <label></label>
                     </div>
+                    <div class="clearfix"> </div>
                   </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <!-- Info Boxes Style 2 -->
-                  <div class="info-box mb-3 bg-warning">
-                    <span class="info-box-icon"><i class="fas fa-dollar-sign"></i></span>
-
-                    <div class="info-box-content">
-                      <span class="info-box-text">Montant budgetaire restant</span>
-                      <span class="info-box-number">5,200</span>
+                  <div class="col-md-3 widget states-last">
+                    <div class="stats-left">
+                      <h4>Dépenses</h4>
+                      <h5>{{ exercices[index].depense }}</h5>
                     </div>
-                    <!-- /.info-box-content -->
-                  </div>
-                  <!-- /.info-box -->
-                  <div class="info-box mb-10 bg-success">
-                    <span class="info-box-icon"><i class="fa fa-clock" aria-hidden="true"></i></span>
-
-                    <div class="info-box-content">
-                      <span class="info-box-text">Nombre de jours restant</span>
-                      <span class="info-box-number">92,050</span>
+                    <div class="stats-right">
+                      <label></label>
                     </div>
-                    <!-- /.info-box-content -->
+                    <div class="clearfix"> </div>
                   </div>
-                  <!-- /.info-box -->
-                  <div class="info-box mb-10 bg-danger">
-                    <span class="info-box-icon"><i class="fas fa-percent"></i></span>
-
-                    <div class="info-box-content">
-                      <span class="info-box-text">Taux de Consommation</span>
-                      <span class="info-box-number">114,381%</span>
-                    </div>
-                    <!-- /.info-box-content -->
-                  </div>
-                  <!-- /.info-box -->
+                  <div class="clearfix"> </div>
                 </div>
               </div>
             </div>
           </div>
-          <!-- /.card-body -->
-          <div class="card-footer">
-            <div class="row">
-              <button class="btn btn-secondary float-left blue button-nav" [disabled]="index === 0" (click)="decrementIndex()">Precedent</button>
-              <button class="btn btn-secondary float-right button-nav" [disabled]="index === (exercices.length-1)" (click)="incrementIndex()">Suivant</button>
+        </div>
+        <div class="area-charts">
+          <div class="col-md-6 panel-chrt">
+            <h3 class="sub-tittle dyna">Actions </h3>
+            <div id="wrapper">
+              <section>
+                <button class="btn a_demo_two btn-link" (click)="saveSortie(index)"><h2>Nouvelle sortie</h2></button>
+                <button class="btn a_demo_two btn-link" (click)="detailler(index)"><h2>Afficher les details</h2></button>
+              </section>
             </div>
           </div>
+        <div class="col-md-6 tini-time-line">
+          <h3 class="sub-tittle">Statistiques </h3>
+          <ul class="timeline">
+            <li>
+              <div class="timeline-badge info"><i class="fa fa-money"></i></div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h4 class="timeline-title">Montant budgetaire total estimé</h4>
+                </div>
+                <div class="timeline-body">
+                  <p>22000000000</p>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="timeline-badge primary"><i class="fa fa-bitbucket"></i></div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h4 class="timeline-title">Montant des dépenses</h4>
+                </div>
+                <div class="timeline-body">
+                  <p>14800000000</p>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="timeline-badge danger"><i class="fa fa-bitcoin"></i></div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h4 class="timeline-title">Reste en budget</h4>
+                </div>
+                <div class="timeline-body">
+                  <p>6200000000</p>
+                </div>
+              </div>
+            </li>
+
+          </ul>
         </div>
-        <!-- /.card -->
-        <!-- /.content -->
+        <div class="clearfix"></div>
       </div>
-      <!-- /.content-wrapper -->
+      </div>
+      <div class="card-footer">
+        <div class="row">
+          <button class="btn blue" (click) = "decrementIndex()" [disabled]="index==0"><i class="fa fa-arrow-circle-left"></i> Precedent</button>
+          <button class="btn blue float-right" (click) = "incrementIndex()" [disabled]="index==(exercices.length-1)">Suivant <i class="fa fa-arrow-circle-right"></i></button>
+        </div>
+      </div>
     </div>
-  </section>
 </div>

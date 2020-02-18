@@ -5,61 +5,68 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css',
     '../../assets/bootstrap/css/bootstrap.css',
-    '../../../assets/template/plugins/fontawesome-free/css/all.min.css',
-    '../../../assets/template/plugins/sweetalert2/sweetalert2.min.css',
-    '../../../assets/template/dist/css/adminlte.min.css']
+    '../../../assets/template2/css/bootstrap.min.css',
+    '../../../assets/template2/css/font-awesome.css',
+    '../../../assets/template2/css/style.css',
+    '../../../assets/template2/css/icon-font.min.css'
+  ]
 })
 export class HomeComponent implements OnInit {
 
   index: number = 0;
+  date = new Date();
+  dateDay = this.date.getDate() + '/' + this.date.getMonth() + '/' + this.date.getFullYear();
   exercices = [
     {
       dateDebut: '16/01/2017',
       dateFin: '27/03/2020',
-      dateDay:  '01/01/2020',
       resteJ: 86,
-      Motif : "Cours"
+      Motif : 'Cours',
+      depense: 56000
     },
     {
       dateDebut: '06/05/2089',
       dateFin: '01/08/2020',
-      dateDay:  '03/02/2020',
       resteJ: 85,
-      Motif : "Habillement"
+      Motif : 'Habillement',
+      depense: 98630
     },
     {
       dateDebut: '22/07/2078',
       dateFin: '01/09/1939',
-      dateDay:  '25/12/1956',
       resteJ: 188,
-      Motif : "Alimentation"
+      Motif : 'Alimentation',
+      depense: 38520
     },
     {
       dateDebut: '07/07/2007',
       dateFin: '08/08/2008',
-      dateDay:  '01/01/2020',
       resteJ: 122,
-      Motif : "Losir"
+      Motif : 'Losir',
+      depense: 73000
     },
-  ]
+  ];
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  incrementIndex(){
-    this.index++;
-    if(this.index >= this.exercices.length) this.index = this.exercices.length - 1;
+  incrementIndex() {
+    if (this.exercices[++this.index].isFinished()) this.incrementIndex();
+    if (this.index >= this.exercices.length) this.index = this.exercices.length - 1;
   }
 
-  decrementIndex(){
+  decrementIndex() {
     this.index--;
-    if(this.index <= 0) this.index = 0;
+    if (this.index <= 0) this.index = 0;
   }
 
-  detailler(index: number){
-    console.log("On va vous afficher l'integralité de l'exrcice "+index);
+  detailler(index: number) {
+    console.log('On va vous afficher l\'integralité de l\'exercice ' + this.index);
   }
 
+  saveSortie(index: number) {
+    console.log('On enregistre la sortie dans l\'exercice numero ' + this.index);
+  }
 }
