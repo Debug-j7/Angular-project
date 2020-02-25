@@ -9,6 +9,8 @@ export class ExercicesService {
   constructor() { }
 
   saveExercice(exercice: Exercice) {
+    const id = this.generateId();
+    exercice.setId(id);
     this.exercices.push(exercice);
   }
 
@@ -32,5 +34,22 @@ export class ExercicesService {
 
   isFinished(index: number): boolean {
     return false;
+  }
+
+  private existsExercice(id: number){
+    for(let exo of this.exercices){
+      if(exo.getId() == id) return true;
+    }
+    return false;
+  }
+
+  private generateId(){
+    let id = 1;
+    while(id){
+      if(!this.existsExercice(id)){
+        return id;
+      }
+      id++;
+    }
   }
 }

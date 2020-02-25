@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-lg-offset-1 col-12 float-right">
     <h1>Home</h1>
-    <div class="card" *ngIf="exercices.length != 0">
+    <div class="card" *ngIf="activeExercices.length != 0">
       <div class="card-header">
         <div class="card-header-tabs"></div>
-        <div class="card-title"><h2 class="text-2">Exercice {{ exercices[index].Motif }}</h2></div>
+        <div class="card-title"><h2 class="text-2">Exercice {{ activeExercices[index].getMotif() }}</h2></div>
       </div>
       <div class="card-body">
         <div class="inner-content">
@@ -16,7 +16,7 @@
                   <div class="col-md-3 widget">
                     <div class="stats-left ">
                       <h4>Begin</h4>
-                      <h5> {{ exercices[index].dateDebut }}</h5>
+                      <h5> {{ activeExercices[index].getDateDebut() }}</h5>
                     </div>
                     <div class="stats-right">
                       <label></label>
@@ -36,7 +36,7 @@
                   <div class="col-md-3 widget states-thrd">
                     <div class="stats-left">
                       <h4>End</h4>
-                      <h5>{{ exercices[index].dateFin }}</h5>
+                      <h5>{{ activeExercices[index].getDateFin() }}</h5>
                     </div>
                     <div class="stats-right">
                       <label></label>
@@ -46,7 +46,7 @@
                   <div class="col-md-3 widget states-last">
                     <div class="stats-left">
                       <h4>Dépenses</h4>
-                      <h5>{{ exercices[index].depense }}</h5>
+                      <h5>{{ activeExercices[index].getDepense() }}</h5>
                     </div>
                     <div class="stats-right">
                       <label></label>
@@ -116,8 +116,15 @@
       <div class="card-footer">
         <div class="row">
           <button class="btn blue" (click) = "decrementIndex()" [disabled]="index==0"><i class="fa fa-arrow-circle-left"></i> Precedent</button>
-          <button class="btn blue float-right" (click) = "incrementIndex()" [disabled]="index==(exercices.length-1)">Suivant <i class="fa fa-arrow-circle-right"></i></button>
+          <button class="btn blue float-right" (click) = "incrementIndex()" [disabled]="index==(activeExercices.length-1)">Suivant <i class="fa fa-arrow-circle-right"></i></button>
         </div>
       </div>
     </div>
+    <div class="card" *ngIf="this.activeExercices.length == 0">
+      <div class="card-header">
+        <h2>Bienvenu dans le site pour les exercices budgetaires</h2>
+        <p>Vous pouverz créer un exrcice en cliquant <a href="">ici.</a></p>
+      </div>
+    </div>
+  </div>
 </div>

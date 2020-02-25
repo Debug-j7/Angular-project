@@ -1,0 +1,111 @@
+<ng-container>
+  <div class="row">
+    <div class="col-lg-offset-1 col-lg-11">
+      <div class="container">
+        <div class="content-wrapper">
+          <div class="card" *ngIf="exercice !== indefined">
+            <div class="card-title"><h1 id="title">Exercice {{ exercice.getMotif() }}</h1></div>
+            <div class="card-body">
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-header-title"><h2>Statistiques</h2></div>
+                </div>
+                <div class="card-body">
+                  <div class="inner-content">
+                    <div class="container">
+                      <div class="outter-wp">
+                        <!--custom-widgets-->
+                        <div class="custom-widgets">
+                          <div class="row-one">
+                            <div class="col-md-3 widget">
+                              <div class="stats-left ">
+                                <h4>Begin</h4>
+                                <h5> {{ goodDate(exercice.getDateDebut()) }}</h5>
+                              </div>
+                              <div class="clearfix"> </div>
+                            </div>
+                            <div class="col-md-3 widget states-mdl">
+                              <div class="stats-left">
+                                <h4>Today</h4>
+                                <h5>{{ getDateJour() }}</h5>
+                              </div>
+                              <div class="clearfix"> </div>
+                            </div>
+                            <div class="col-md-3 widget states-thrd">
+                              <div class="stats-left">
+                                <h4>End</h4>
+                                <h5>{{ goodDate(exercice.getDateFin()) }}</h5>
+                              </div>
+                              <div class="clearfix"> </div>
+                            </div>
+                            <div class="col-md-3 widget states-last">
+                              <div class="stats-left">
+                                <h4>Dépenses</h4>
+                                <h5>{{ exercice.getDepense() }}</h5>
+                              </div>
+                              <div class="clearfix"> </div>
+                            </div>
+                            <div class="clearfix"> </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-title">
+                  <h2>Sorties</h2>
+                </div>
+                <div class="card-header">
+                  <div class="float-right"><h4><a href="" style="text-decoration: underline; ">Nouvelle sortie</a></h4></div>
+                </div>
+                <div class="card-body">
+                  <table class="table" *ngIf="sorties !== undefined">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>User Name</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="card" *ngIf="sorties === undefined">
+                    <div class="card-body">
+                      <h3>Aucune sortie n'est enregistrée pour cet exercice</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card" *ngIf="exercice === undefined">
+            <div class="card-body"><h2 class="text-center">Aucun exercice n'a été presenté</h2></div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</ng-container>

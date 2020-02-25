@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Exercice} from '../instances/exercice';
+import {ExercicesService} from '../exercices.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,57 +16,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  index: number = 0;
+  index = 0;
   date = new Date();
   dateDay = this.date.getDate() + '/' + this.date.getMonth() + '/' + this.date.getFullYear();
-  exercices = [
-    {
-      dateDebut: '16/01/2017',
-      dateFin: '27/03/2020',
-      resteJ: 86,
-      Motif : 'Cours',
-      depense: 56000
-    },
-    {
-      dateDebut: '06/05/2089',
-      dateFin: '01/08/2020',
-      resteJ: 85,
-      Motif : 'Habillement',
-      depense: 98630
-    },
-    {
-      dateDebut: '22/07/2078',
-      dateFin: '01/09/1939',
-      resteJ: 188,
-      Motif : 'Alimentation',
-      depense: 38520
-    },
-    {
-      dateDebut: '07/07/2007',
-      dateFin: '08/08/2008',
-      resteJ: 122,
-      Motif : 'Losir',
-      depense: 73000
-    },
-  ];
+  activeExercices: Exercice[];
 
-  constructor() { }
+  constructor(private service: ExercicesService, private router: Router) {
+    for (const exo of this.service.exercices) {
+      if (exo.isFinished()) {
+        this.activeExercices.push(exo);
+      }
+    }
+  }
 
   ngOnInit() {
   }
 
   incrementIndex() {
-    if (this.exercices[++this.index].isFinished()) this.incrementIndex();
-    if (this.index >= this.exercices.length) this.index = this.exercices.length - 1;
+    this.index++;
+    if(this.index >= this.activeExercices.length) {
+      this.index = this.activeExercices.length -1;
+    }
   }
 
   decrementIndex() {
     this.index--;
-    if (this.index <= 0) this.index = 0;
+    if (this.index < 0) {
+      this.index = 0;
+    }
   }
 
   detailler(index: number) {
     console.log('On va vous afficher l\'integralité de l\'exercice ' + this.index);
+    this.router.navigate(['exercice/' + this.index]);
+
   }
 
   saveSortie(index: number) {

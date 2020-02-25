@@ -10,9 +10,14 @@ import { NewEntreeComponent } from './new-entree/new-entree.component';
 import { HomeComponent } from './home/home.component';
 import { EntreesComponent } from './entrees/entrees.component';
 import { RouterModule, Routes } from '@angular/router';
+import { DisplayExerciceComponent } from './display-exercice/display-exercice.component';
 
 const appRoutes: Routes = [
-  { path : '', component : HomeComponent },
+  {path : '', component : HomeComponent},
+  {path: 'exercice/:id', component: DisplayExerciceComponent},
+  {path: 'save-entree', component: NewEntreeComponent},
+  {path: 'connexion', component: UserAuthComponent},
+  {path: 'signup', component: UserInscComponent}
 ];
 
 @NgModule({
@@ -22,7 +27,8 @@ const appRoutes: Routes = [
     UserInscComponent,
     NewEntreeComponent,
     HomeComponent,
-    EntreesComponent
+    EntreesComponent,
+    DisplayExerciceComponent
   ],
   imports: [
     BrowserModule,
