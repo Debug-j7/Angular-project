@@ -29,7 +29,7 @@
          </li>
          <li><a href="typography.html"><i class="fa fa-money"></i><span>Entrees</span> <span class="fa fa-angle-right" style="float: right"></span></a>
            <ul id="menu-academico-sub">
-             <li id="menu-academico-avaliacoes" ><a href="login.html">Nouveau</a></li>
+             <li id="menu-academico-avaliacoes" ><a routerLink="save-entree">Nouveau</a></li>
              <li id="menu-academico-boletim" ><a href="register.html">Rapport</a></li>
            </ul></li>
        </ul>
@@ -38,8 +38,15 @@
    <div class="right-content">
      <div class="inner-content">
        <div class="container">
-         <app-display-exercice></app-display-exercice>
+         <app-new-entree></app-new-entree>
        </div>
      </div>
    </div>
+  </div>
+  <div>
+    <!--footer section start-->
+    <footer>
+      <p>&copy {{ annee }} Augment . All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">W3layouts.</a></p>
+    </footer>
+    <!--footer section end-->
   </div>
