@@ -5,7 +5,7 @@ import { User } from './instances/user';
   providedIn: 'root'
 })
 export class UserService {
-  private connectedUser: number = -1;
+  private connectedUser = -1;
   private users: User[];
   constructor() { }
 
@@ -29,7 +29,7 @@ export class UserService {
 
   signIn(login: string, password: string): boolean {
     for(const user of this.users) {
-      if((user.getLogin() == login) && (user.getPassword() == password)) {
+      if((user.getLogin() === login) && (user.getPassword() === password)) {
         this.connectedUser = this.users.indexOf(user);
         return true;
       }
@@ -54,8 +54,8 @@ export class UserService {
   }
 
   private existsId(id: number): boolean {
-    for(const user of this.users) {
-      if(user.getid() == id) {
+    for (const user of this.users) {
+      if (user.getid() === id) {
         return true;
       }
     }
@@ -64,8 +64,8 @@ export class UserService {
 
   private generateId() {
     let id = 1;
-    while(id) {
-      if(!(this.existsId(id))){
+    while (id) {
+      if (!(this.existsId(id))) {
         return id;
       }
       id++;

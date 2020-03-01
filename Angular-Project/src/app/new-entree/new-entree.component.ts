@@ -18,7 +18,7 @@ import { Entree } from '../instances/entree';
 })
 export class NewEntreeComponent implements OnInit {
 
-  form: FormGroup;
+  entreeForm: FormGroup;
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
               private router: Router,
@@ -26,21 +26,23 @@ export class NewEntreeComponent implements OnInit {
               private functionsService: FunctionsService) { }
 
   ngOnInit() {
+    this.initForm();
   }
 
   initForm() {
-    this.form = this.formBuilder.group({
+    this.entreeForm = this.formBuilder.group({
       date: ['', Validators.required],
-      montant: ['', Validators.required]
+      montant: ['', Validators.required],
+      source: ['']
     });
   }
 
   onSubmit() {
-    const values = this.form.value;
-    const date = this.functionsService.strToDate(values['date']);
-    const entree = new Entree(date, values['montant'], values['motif'], this.userService.getConnectedIndex());
+    const values = this.entreeForm.value;
+    const date = this.functionsService.strToDate(values.date);
+    const entree = new Entree(date, parseInt(values.montant), values.source, this.userService.getConnectedIndex());
     this.service.saveEntree(entree);
-    this.userService.saveEntree(values['montant']);
+    this.userService.saveEntree(values.montant);
     this.router.navigate(['/']);
   }
 

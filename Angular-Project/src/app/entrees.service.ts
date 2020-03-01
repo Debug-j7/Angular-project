@@ -5,11 +5,13 @@ import { Entree } from './instances/entree';
   providedIn: 'root'
 })
 export class EntreesService {
-  private entrees: Entree[];
+  private entrees: Entree[] = [];
   constructor() { }
 
   saveEntree(entree: Entree): void {
     this.entrees.push(entree);
+    console.log('Sortie enregistré');
+    console.log(entree);
   }
 
   editEntree(entree: Entree, index: number): void {
