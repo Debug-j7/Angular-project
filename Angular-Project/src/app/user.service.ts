@@ -16,10 +16,14 @@ export class UserService {
   saveUser(user: User) {
     const id = this.generateId();
     user.setId(id);
+    user.setIdUser(this.getConnectedIndex());
     this.users.push(user);
   }
 
   editUser(user: User) {
+    user.setIdUser(this.getConnectedIndex());
+    const id = this.users[this.connectedUser].getid();
+    user.setId(id||this.generateId());
     this.users[this.connectedUser] = user;
   }
 

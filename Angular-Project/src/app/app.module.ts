@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { EntreesComponent } from './entrees/entrees.component';
 import { RouterModule, Routes } from '@angular/router';
 import { DisplayExerciceComponent } from './display-exercice/display-exercice.component';
+import { NewSortieComponent } from './new-sortie/new-sortie.component';
 
 const appRoutes: Routes = [
   {path : '', component : HomeComponent},
@@ -28,7 +29,8 @@ const appRoutes: Routes = [
     NewEntreeComponent,
     HomeComponent,
     EntreesComponent,
-    DisplayExerciceComponent
+    DisplayExerciceComponent,
+    NewSortieComponent
   ],
   imports: [
     BrowserModule,

@@ -19,4 +19,14 @@ export class SortieService {
     return retour;
   }
 
+  saveSortie(sortie: Sortie) {
+    this.sorties.push(sortie);
+  }
+
+  editSortie(sortie: Sortie, id: number) {
+    this.sorties['id'] = sortie;
+  }
+
+
+
 }

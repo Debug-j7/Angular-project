@@ -1,1 +1,38 @@
-<p>entrees works!</p>
+<div class="container">
+    <div class="row">
+      <div class="col-lg-offset-2 col-lg-11">
+          <div class="card">
+            <div class="card-title">
+              <h2>Entrees</h2>
+            </div>
+            <div class="card-header">
+              <div class="float-right"><h4><a routerLink="/save-entree" style="text-decoration: underline; ">Nouvelle Entree</a></h4></div>
+            </div>
+            <div class="card-body">
+              <table class="table table-responsive table-striped table-scroll-vertical" *ngIf="entrees !== undefined">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Date d'entree</th>
+                    <th>Montant</th>
+                    <th>Motif</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let entree of entrees; let i=index">
+                    <th scope="row">{{ i+1 }}</th>
+                    <td>{{ goodDate(entree.getDate()) }}</td>
+                    <td>{{ entree.getMontant() }}</td>
+                    <td>{{ entree.getMotif() }}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="card" *ngIf="entrees === undefined">
+                <div class="card-body">
+                  <h3>Aucune sortie n'est enregistrée pour cet exercice</h3>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>

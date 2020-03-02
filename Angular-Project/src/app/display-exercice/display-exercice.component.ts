@@ -18,9 +18,9 @@ import { FunctionsService } from '../functions.service';
 })
 export class DisplayExerciceComponent implements OnInit {
 
-  private exercice: Exercice;
-  private index: number;
-  private sorties: Sortie[];
+  exercice: Exercice;
+  index: number;
+  sorties: Sortie[];
 
   constructor(private service: ExercicesService,
               private sortieService: SortieService,

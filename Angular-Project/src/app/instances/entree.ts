@@ -11,7 +11,7 @@ export class Entree {
     this.setIdUser(idUser);
   }
 
-  getdate(): Date {
+  getDate(): Date {
     return this.date;
   }
 
