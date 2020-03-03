@@ -32,14 +32,13 @@ export class NewSortieComponent implements OnInit {
       date: ['', Validators.required],
       montant: ['', Validators.required],
       motif: ['']
-    })
+    });
   }
 
   onSubmit() {
     const values = this.sortieForm.value;
     const date = this.functionService.strToDate(values['date']);
-    let sortie = new Sortie(date, +values['montant'], values['motif'], this.userService.getConnectedIndex());
-    this.sortieService.save
+    const sortie = new Sortie(date, +values['montant'], values['motif'], this.userService.getConnectedIndex());
+    this.sortieService.saveSortie(sortie);
   }
-
 }

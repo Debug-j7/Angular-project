@@ -19,13 +19,17 @@ export class HomeComponent implements OnInit {
   index = 0;
   date = new Date();
   dateDay = this.date.getDate() + '/' + this.date.getMonth() + '/' + this.date.getFullYear();
-  activeExercices: Exercice[];
+  activeExercices: Exercice[] = [];
 
-  constructor(private service: ExercicesService, private router: Router) {
-    for (const exo of this.service.exercices) {
-      if (exo.isFinished()) {
-        this.activeExercices.push(exo);
+  constructor(private service: ExercicesService,
+              private router: Router) {
+    this.service.exercices.forEach((value,index,array) => {
+      if(!value.isFinished()) {
+        this.activeExercices.push(value);
       }
+    });
+    if(this.activeExercices.length === 0) {
+      this.index = -1;
     }
   }
 
@@ -46,13 +50,31 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  detailler(index: number) {
+  detailler() {
     console.log('On va vous afficher l\'integralité de l\'exercice ' + this.index);
     this.router.navigate(['exercice/' + this.index]);
 
   }
 
-  saveSortie(index: number) {
+  saveSortie() {
+    this.router.navigate(['/save-sortie/' + this.indexOfExercice()]);
     console.log('On enregistre la sortie dans l\'exercice numero ' + this.index);
+  }
+
+  private thereIsActivateExercice() {
+    if(this.activeExercices.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  private indexOfExercice() {
+    return this.service.exercices.indexOf(this.activeExercices[this.index]);
+  }
+
+  montantRestant() {
+    const exercice = this.activeExercices[this.index];
+    return exercice.getBudget() - exercice.getDepense();
   }
 }

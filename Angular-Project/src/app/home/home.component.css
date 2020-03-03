@@ -6,3 +6,11 @@
 .lien{
   text-decoration: underline;
 }
+
+.espaces{
+  margin-top: 10px;
+}
+
+.ligne-deux {
+  margin-left: -20px;
+}

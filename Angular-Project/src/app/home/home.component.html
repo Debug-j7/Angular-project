@@ -1,130 +1,92 @@
-<div class="row">
-  <div class="col-lg-offset-1 col-12 float-right">
-    <h1>Home</h1>
-    <div class="card" *ngIf="activeExercices.length != 0">
-      <div class="card-header">
-        <div class="card-header-tabs"></div>
-        <div class="card-title"><h2 class="text-2">Exercice {{ activeExercices[index].getMotif() }}</h2></div>
-      </div>
-      <div class="card-body">
-        <div class="inner-content">
-          <div class="container">
-            <div class="outter-wp">
-              <!--custom-widgets-->
-              <div class="custom-widgets">
-                <div class="row-one">
-                  <div class="col-md-3 widget">
-                    <div class="stats-left ">
-                      <h4>Begin</h4>
-                      <h5> {{ activeExercices[index].getDateDebut() }}</h5>
+  <div class="row">
+    <div class="col-lg-offset-1 col-9 float-right">
+      <h1>Home</h1>
+      <div class="card" *ngIf="thereIsActivateExercice()">
+        <div class="card-header">
+          <div class="card-header-tabs"></div>
+          <div class="card-title"><h3 class="text-2">Exercice {{ activeExercices[index].getMotif() }}</h3></div>
+        </div>
+        <div class="card-body">
+          <div class="inner-content">
+            <div class="container">
+              <div class="outter-wp">
+                <!--custom-widgets-->
+                <div class="custom-widgets">
+                  <div class="row-one">
+                    <div class="col-md-3 widget">
+                      <div class="stats-left espaces">
+                        <h4>Begin</h4>
+                        <h5> {{ activeExercices[index].getDateDebut() }}</h5>
+                      </div>
                     </div>
-                    <div class="stats-right">
-                      <label></label>
+                    <div class="col-md-3 widget states-mdl">
+                      <div class="stats-left espaces">
+                        <h4>Today</h4>
+                        <h5>{{ dateDay }}</h5>
+                      </div>
                     </div>
-                    <div class="clearfix"> </div>
-                  </div>
-                  <div class="col-md-3 widget states-mdl">
-                    <div class="stats-left">
-                      <h4>Today</h4>
-                      <h5>{{ dateDay }}</h5>
+                    <div class="col-md-3 widget states-thrd">
+                      <div class="stats-left espaces">
+                        <h4>End</h4>
+                        <h5>{{ activeExercices[index].getDateFin() }}</h5>
+                      </div>
                     </div>
-                    <div class="stats-right">
-                      <label></label>
+                    <div class="col-md-3 widget states-mdl">
+                      <div class="stats-left espaces ligne-deux">
+                        <h5>Montant Budgetaire</h5>
+                        <h5>{{ activeExercices[index].getBudget() }}</h5>
+                      </div>
                     </div>
-                    <div class="clearfix"> </div>
-                  </div>
-                  <div class="col-md-3 widget states-thrd">
-                    <div class="stats-left">
-                      <h4>End</h4>
-                      <h5>{{ activeExercices[index].getDateFin() }}</h5>
+                    <div class="col-md-3 widget states-thrd">
+                      <div class="stats-left espaces ligne-deux">
+                        <h5>Montant depensé</h5>
+                        <h5>{{ activeExercices[index].getDepense() }}</h5>
+                      </div>
                     </div>
-                    <div class="stats-right">
-                      <label></label>
-                    </div>
-                    <div class="clearfix"> </div>
-                  </div>
-                  <div class="col-md-3 widget states-last">
-                    <div class="stats-left">
-                      <h4>Dépenses</h4>
-                      <h5>{{ activeExercices[index].getDepense() }}</h5>
-                    </div>
-                    <div class="stats-right">
-                      <label></label>
+                    <div class="col-md-3 widget states-last">
+                      <div class="stats-left espaces ligne-deux">
+                        <h5>Montant restant</h5>
+                        <h5>{{ montantRestant() }}</h5>
+                      </div>
                     </div>
                     <div class="clearfix"> </div>
                   </div>
-                  <div class="clearfix"> </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="area-charts">
-          <div class="col-md-6 panel-chrt">
-            <h3 class="sub-tittle dyna">Actions </h3>
-            <div id="wrapper">
-              <section>
-                <button class="btn a_demo_two btn-link" (click)="saveSortie(index)"><h2>Nouvelle sortie</h2></button>
-                <button class="btn a_demo_two btn-link" (click)="detailler(index)"><h2>Afficher les details</h2></button>
-              </section>
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-8">
+              <h4><a (click)="saveSortie()" href="#" style="text-decoration: underline">Nouvelle sortie</a></h4>
+            </div>
+            <div class="col-4">
+              <h4><a href="#" (click)="detailler()" style="text-decoration: underline">Afficher les details</a></h4>
             </div>
           </div>
-        <div class="col-md-6 tini-time-line">
-          <h3 class="sub-tittle">Statistiques </h3>
-          <ul class="timeline">
-            <li>
-              <div class="timeline-badge info"><i class="fa fa-money"></i></div>
-              <div class="timeline-panel">
-                <div class="timeline-heading">
-                  <h4 class="timeline-title">Montant budgetaire total estimé</h4>
-                </div>
-                <div class="timeline-body">
-                  <p>22000000000</p>
-                </div>
-              </div>
-            </li>
-
-            <li>
-              <div class="timeline-badge primary"><i class="fa fa-bitbucket"></i></div>
-              <div class="timeline-panel">
-                <div class="timeline-heading">
-                  <h4 class="timeline-title">Montant des dépenses</h4>
-                </div>
-                <div class="timeline-body">
-                  <p>14800000000</p>
-                </div>
-              </div>
-            </li>
-
-            <li>
-              <div class="timeline-badge danger"><i class="fa fa-bitcoin"></i></div>
-              <div class="timeline-panel">
-                <div class="timeline-heading">
-                  <h4 class="timeline-title">Reste en budget</h4>
-                </div>
-                <div class="timeline-body">
-                  <p>6200000000</p>
-                </div>
-              </div>
-            </li>
-
-          </ul>
         </div>
-        <div class="clearfix"></div>
-      </div>
-      </div>
-      <div class="card-footer">
-        <div class="row">
-          <button class="btn blue" (click) = "decrementIndex()" [disabled]="index==0"><i class="fa fa-arrow-circle-left"></i> Precedent</button>
-          <button class="btn blue float-right" (click) = "incrementIndex()" [disabled]="index==(activeExercices.length-1)">Suivant <i class="fa fa-arrow-circle-right"></i></button>
-        </div>
-      </div>
-    </div>
-    <div class="card" *ngIf="this.activeExercices.length == 0">
-      <div class="card-header">
-        <h2>Bienvenu dans le site pour les exercices budgetaires</h2>
-        <p>Vous pouverz créer un exrcice en cliquant <a href="">ici.</a></p>
       </div>
     </div>
   </div>
-</div>
+    <div class="card" *ngIf="thereIsActivateExercice()">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-8">
+            <button class="btn blue" (click) = "decrementIndex()" [disabled]="(index == 0) || (!thereIsActivateExercice())"><i class="fa fa-arrow-circle-left"></i> Precedent</button>
+          </div>
+          <div class="col-4">
+            <button class="btn blue" (click) = "incrementIndex()" [disabled]="(index == (activeExercices.length -1)) || (!thereIsActivateExercice())">Suivant <i class="fa fa-arrow-circle-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-offset-1 col-11" *ngIf="!thereIsActivateExercice()">
+      <div class="card" >
+        <div class="card-header">
+          <h2 class="">Bienvenu(e) sur le site pour les exercices budgetaires</h2>
+          <h5>Aucun exercice budgetaire n'est en cours</h5>
+          <h5>Vous pouvez en créer un en cliquant <a routerLink="/save-exercice">ici.</a></h5>
+        </div>
+      </div>
+    </div>
+  </div>

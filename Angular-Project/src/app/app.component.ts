@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css',
+    '../assets/bootstrap/css/bootstrap.min.css',
     '../../assets/template2/css/bootstrap.min.css',
     '../../assets/template2/css/font-awesome.css',
     '../../assets/template2/css/style.css',

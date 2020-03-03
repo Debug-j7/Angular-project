@@ -17,8 +17,10 @@ const appRoutes: Routes = [
   {path : '', component : HomeComponent},
   {path: 'exercice/:id', component: DisplayExerciceComponent},
   {path: 'save-entree', component: NewEntreeComponent},
+  {path: 'save-sortie/:id', component: NewSortieComponent},
   {path: 'connexion', component: UserAuthComponent},
-  {path: 'signup', component: UserInscComponent}
+  {path: 'signup', component: UserInscComponent},
+  {path: 'entrees', component: EntreesComponent}
 ];
 
 @NgModule({

@@ -4,7 +4,7 @@
       <div class="content-wrapper">
         <fieldset>
           <legend><h2>Enregistrer une sortie</h2></legend>
-          <form role="form" [formGroup]="sortieForm" onsubmit="submit()">
+          <form role="form" [formGroup]="sortieForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
               <label for="date">Date du jour</label>
               <input type="date" id="date" class="form-control" />

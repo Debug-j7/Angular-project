@@ -1,28 +1,35 @@
-<body>
-  <div class="container">
+ <div class="container">
     <div class="row">
-      <div class="col-9">
-        <fieldset>
-          <legend>Se connecter</legend>
-          <div class="float-right">
-            <a href="" class="float-right" style="text-decoration: underline;">S'inscrire</a>
+      <div class="col-lg-offset-1 col-lg-11">
+        <div class="card">
+          <div class="card-title">
+            <h2>Se connecter</h2>
           </div>
-          <form role="form" [formGroup]="form" (ngSubmit)="onSubmit()">
-            <div class="form-group">
-              <label for="login">Login ou Username</label>
-              <input type="text" class="form-control" placeholder="Login" formControlName="login" id="login" />
+          <div class="card-header">
+            <div class="float-right">
+              <h3>Je n'ai pas encore un compte. <a href="" class="float-right" style="text-decoration: underline;">S'inscrire</a></h3>
             </div>
-            <div class="form-group">
-              <label for="psw">Password</label>
-              <input type="password" class="form-control" placeholder="Password" formControlName="psw" id="psw">
-            </div>
+          </div>
+          <div class="body">
+            <fieldset>
+              <form role="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                  <label for="login">Login ou Username</label>
+                  <input type="text" class="form-control" placeholder="Login" formControlName="login" id="login" />
+                </div>
+                <div class="form-group">
+                  <label for="psw">Password</label>
+                  <input type="password" class="form-control" placeholder="Password" formControlName="psw" id="psw">
+                </div>
+              </form>
+            </fieldset>
+          </div>
+          <div class="card-footer">
             <div class="form-group">
               <button type="submit" class="btn btn-success" [disabled]="form.invalid">Sign In</button>
             </div>
-          </form>
-          <p>Je n'ai pas de compte. <a href="" style="text-decoration: underline;">S'inscrire</a></p>
-        </fieldset>
+          </div>
       </div>
     </div>
   </div>
-</body>
+

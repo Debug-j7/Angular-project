@@ -5,7 +5,7 @@ import {Exercice} from './instances/exercice';
   providedIn: 'root'
 })
 export class ExercicesService {
-  exercices: Exercice[];
+  exercices: Exercice[] = [];
   constructor() { }
 
   saveExercice(exercice: Exercice) {

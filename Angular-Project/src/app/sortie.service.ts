@@ -27,6 +27,7 @@ export class SortieService {
     this.sorties['id'] = sortie;
   }
 
-
-
+  deleteSortie(id: number) {
+    this.sorties.slice(id);
+  }
 }

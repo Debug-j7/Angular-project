@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {User} from "../instances/user";
+import {UserService} from "../user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-user-insc',
@@ -10,15 +13,17 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class UserInscComponent implements OnInit {
 
-  form: FormGroup;
-  constructor(private formBuilder: FormBuilder) { }
+  userForm: FormGroup;
+  constructor(private formBuilder: FormBuilder,
+              private userService: UserService,
+              private router: Router) { }
 
   ngOnInit() {
     this.initForm();
   }
 
   initForm() {
-    this.form = this.formBuilder.group({
+    this.userForm = this.formBuilder.group({
       login: ['', Validators.required],
       full_name: ['', Validators.required],
       psw: ['', Validators.required],
@@ -28,7 +33,9 @@ export class UserInscComponent implements OnInit {
   }
 
   onSubmit() {
-    const values = this.form.value;
-    console.log(values);
+    const values = this.userForm.value;
+    const user = new User(values['full_name'], values['login'], values['psw'], values['email']);
+    this.userService.saveUser(user);
+    this.router.navigate(['/']);
   }
 }
