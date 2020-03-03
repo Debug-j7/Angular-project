@@ -5,6 +5,7 @@ export class Exercice {
   private depense: number;
   private motif: string;
   private id: number;
+  private idUser: number;
 
   constructor(motif: string, budget: number, dateFin: Date, dateDebut?: Date, depense?: number) {
     const date = new Date();
@@ -41,6 +42,14 @@ export class Exercice {
 
   setId(id: number){
     this.id = id;
+  }
+
+  getIdUser() {
+    return this.idUser;
+  }
+
+  setIdUser(id: number) {
+    this.idUser = id;
   }
 
   isFinished() {

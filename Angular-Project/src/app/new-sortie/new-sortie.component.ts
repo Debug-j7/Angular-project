@@ -4,6 +4,7 @@ import {Sortie} from "../instances/sortie";
 import {FunctionsService} from "../functions.service";
 import {UserService} from "../user.service";
 import {SortieService} from "../sortie.service";
+import {ActivatedRoute, ActivatedRouteSnapshot} from "@angular/router";
 
 @Component({
   selector: 'app-new-sortie',
@@ -18,12 +19,15 @@ import {SortieService} from "../sortie.service";
 export class NewSortieComponent implements OnInit {
 
   sortieForm: FormGroup;
+  idExercice: number;
   constructor(private formBuilder: FormBuilder,
               private functionService: FunctionsService,
               private userService: UserService,
-              private sortieService: SortieService) { }
+              private sortieService: SortieService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.idExercice = this.route.snapshot.params['id'];
     this.initForm();
   }
 

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Exercice} from './instances/exercice';
+import {UserService} from "./user.service";
 
 @Injectable({
   providedIn: 'root'
@@ -51,5 +52,15 @@ export class ExercicesService {
       }
       id++;
     }
+  }
+
+  getExerciceByIdUser(idUser: number): Exercice[] {
+    let exercices: Exercice[] = [];
+    this.exercices.forEach((value, index, array) => {
+      if(value.getIdUser() === id) {
+        exercices.push(value);
+      }
+    });
+    return exercices;
   }
 }

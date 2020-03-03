@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Exercice} from "../instances/exercice";
 import {ExercicesService} from "../exercices.service";
 import {FunctionsService} from "../functions.service";
+import {UserService} from "../user.service";
 
 @Component({
   selector: 'app-exercices',
@@ -18,8 +19,9 @@ export class ExercicesComponent implements OnInit {
   exercices: Exercice[] = [];
 
   constructor(private service: ExercicesService,
-              private functionService: FunctionsService) {
-    this.exercices = this.service.exercices;
+              private functionService: FunctionsService,
+              private userService: UserService) {
+    this.exercices = this.service.getExerciceByIdUser(this.userService.getConnectedIndex());
   }
 
   ngOnInit() {

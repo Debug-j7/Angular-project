@@ -13,11 +13,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { DisplayExerciceComponent } from './display-exercice/display-exercice.component';
 import { NewSortieComponent } from './new-sortie/new-sortie.component';
 import { ExercicesComponent } from './exercices/exercices.component';
+import { NewExerciceComponent } from './new-exercice/new-exercice.component';
 
 const appRoutes: Routes = [
   {path : '', component : HomeComponent},
   {path: 'exercice/:id', component: DisplayExerciceComponent},
   {path: 'exercices', component: ExercicesComponent},
+  {path: 'save-exercice', component: NewExerciceComponent},
   {path: 'save-entree', component: NewEntreeComponent},
   {path: 'save-sortie/:id', component: NewSortieComponent},
   {path: 'connexion', component: UserAuthComponent},
@@ -35,7 +37,8 @@ const appRoutes: Routes = [
     EntreesComponent,
     DisplayExerciceComponent,
     NewSortieComponent,
-    ExercicesComponent
+    ExercicesComponent,
+    NewExerciceComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-offset-1 col-11">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-header-tabs">
+            <div class="card-title">
+              <h3>Nouvel exercice budgetaire</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <fieldset>
+            <form role="form" [formGroup]="exerciceForm" (ngSubmit)="onSubmit">
+              <div class="form-group">
+                <label for="dateDebut">Date de debut</label>
+                <input type="date" id="dateDebut" class="form-control" formControlName="dateDebut" placeholder="date de debut" />
+              </div>
+              <div class="form-group">
+                <label for="dateFin">Date de fin</label>
+                <input type="date" id="dateFin" class="form-control" formControlName="dateFin" placeholder="date de fin" />
+              </div>
+              <div class="form-group">
+                <label for="budget">Date de debut</label>
+                <input type="number" id="budget" class="form-control" formControlName="budget" placeholder="Montant budgetaire" />
+              </div>
+              <div class="form-group">
+                <label for="motif">Motif</label>
+                <input id="motif" class="form-control" formControlName="motif" placeholder="Motif" />
+              </div>
+              <div class="form-group">
+                <div class="card">
+                  <div class="card-header">
+                    <div class="row">
+                      <button type="submit" class="btn btn-success" [disabled]="exerciceForm.invalid">Créer</button>
+                      <button type="reset" class="btn btn-danger">Annuler</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
