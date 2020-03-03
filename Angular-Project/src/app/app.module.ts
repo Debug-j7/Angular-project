@@ -12,10 +12,12 @@ import { EntreesComponent } from './entrees/entrees.component';
 import { RouterModule, Routes } from '@angular/router';
 import { DisplayExerciceComponent } from './display-exercice/display-exercice.component';
 import { NewSortieComponent } from './new-sortie/new-sortie.component';
+import { ExercicesComponent } from './exercices/exercices.component';
 
 const appRoutes: Routes = [
   {path : '', component : HomeComponent},
   {path: 'exercice/:id', component: DisplayExerciceComponent},
+  {path: 'exercices', component: ExercicesComponent},
   {path: 'save-entree', component: NewEntreeComponent},
   {path: 'save-sortie/:id', component: NewSortieComponent},
   {path: 'connexion', component: UserAuthComponent},
@@ -32,7 +34,8 @@ const appRoutes: Routes = [
     HomeComponent,
     EntreesComponent,
     DisplayExerciceComponent,
-    NewSortieComponent
+    NewSortieComponent,
+    ExercicesComponent
   ],
   imports: [
     BrowserModule,

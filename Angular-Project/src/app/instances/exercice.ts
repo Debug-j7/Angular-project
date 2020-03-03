@@ -52,4 +52,21 @@ export class Exercice {
     }
   }
 
+  isPreparing(){
+    const dateJour = new Date();
+    if(dateJour.valueOf() < this.getDateDebut().valueOf()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  isBeing() {
+    const dateJour = new Date();
+    if((dateJour.valueOf() >= this.getDateDebut().valueOf()) && (dateJour.valueOf() <= this.getDateFin().valueOf())) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

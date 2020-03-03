@@ -29,4 +29,9 @@ export class EntreesComponent implements OnInit {
     return this.functionService.formatDate(date);
   }
 
+  thereIsAnEntree() {
+    return (this.entrees.length !== 0)
+  }
+
+
 }
