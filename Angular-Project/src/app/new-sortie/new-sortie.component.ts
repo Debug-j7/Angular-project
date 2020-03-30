@@ -4,7 +4,7 @@ import {Sortie} from "../instances/sortie";
 import {FunctionsService} from "../functions.service";
 import {UserService} from "../user.service";
 import {SortieService} from "../sortie.service";
-import {ActivatedRoute, ActivatedRouteSnapshot} from "@angular/router";
+import {ActivatedRoute, ActivatedRouteSnapshot, Router} from "@angular/router";
 
 @Component({
   selector: 'app-new-sortie',
@@ -24,7 +24,8 @@ export class NewSortieComponent implements OnInit {
               private functionService: FunctionsService,
               private userService: UserService,
               private sortieService: SortieService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     this.idExercice = this.route.snapshot.params['id'];
@@ -44,5 +45,6 @@ export class NewSortieComponent implements OnInit {
     const date = this.functionService.strToDate(values['date']);
     const sortie = new Sortie(date, +values['montant'], values['motif'], this.userService.getConnectedIndex());
     this.sortieService.saveSortie(sortie);
+    this.router.navigate(['sorties'])
   }
 }

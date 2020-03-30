@@ -7,8 +7,11 @@ import {Router} from "@angular/router";
   selector: 'app-user-auth',
   templateUrl: './user-auth.component.html',
   styleUrls: ['./user-auth.component.css',
-   '../../assets/bootstrap/css/bootstrap.min.css',
-    '../../assets/bootstrap/css/font-awesome.min.css']
+    '../../assets/bootstrap/css/bootstrap.css',
+    '../../../assets/template2/css/bootstrap.min.css',
+    '../../../assets/template2/css/font-awesome.css',
+    '../../../assets/template2/css/style.css',
+    '../../../assets/template2/css/icon-font.min.css']
 })
 export class UserAuthComponent implements OnInit {
 

@@ -14,6 +14,7 @@ import { DisplayExerciceComponent } from './display-exercice/display-exercice.co
 import { NewSortieComponent } from './new-sortie/new-sortie.component';
 import { ExercicesComponent } from './exercices/exercices.component';
 import { NewExerciceComponent } from './new-exercice/new-exercice.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const appRoutes: Routes = [
   {path : '', component : HomeComponent},
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
     DisplayExerciceComponent,
     NewSortieComponent,
     ExercicesComponent,
-    NewExerciceComponent
+    NewExerciceComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

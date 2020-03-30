@@ -10,7 +10,7 @@ export class SortieService {
   constructor() { }
 
   getSortiesExercice(idExo: number): Sortie[]{
-    let retour: Sortie[];
+    let retour: Sortie[] = [];
     for(const sort of this.sorties){
       if(sort.getIdExercice() === idExo) {
         retour.push(sort);

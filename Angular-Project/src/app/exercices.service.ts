@@ -57,7 +57,7 @@ export class ExercicesService {
   getExerciceByIdUser(idUser: number): Exercice[] {
     let exercices: Exercice[] = [];
     this.exercices.forEach((value, index, array) => {
-      if(value.getIdUser() === id) {
+      if(value.getIdUser() === idUser) {
         exercices.push(value);
       }
     });
