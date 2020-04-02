@@ -15,17 +15,20 @@ import { NewSortieComponent } from './new-sortie/new-sortie.component';
 import { ExercicesComponent } from './exercices/exercices.component';
 import { NewExerciceComponent } from './new-exercice/new-exercice.component';
 import { ProfileComponent } from './profile/profile.component';
+import {AuthGuardService} from "./auth-guard.service";
+
 
 const appRoutes: Routes = [
-  {path : '', component : HomeComponent},
-  {path: 'exercice/:id', component: DisplayExerciceComponent},
-  {path: 'exercices', component: ExercicesComponent},
-  {path: 'save-exercice', component: NewExerciceComponent},
-  {path: 'save-entree', component: NewEntreeComponent},
-  {path: 'save-sortie/:id', component: NewSortieComponent},
+  {path : '',canActivate: [AuthGuardService] , component : HomeComponent},
+  {path: 'exercice/:id', canActivate: [AuthGuardService] , component: DisplayExerciceComponent},
+  {path: 'exercices', canActivate: [AuthGuardService] ,component: ExercicesComponent},
+  {path: 'save-exercice',canActivate: [AuthGuardService] , component: NewExerciceComponent},
+  {path: 'save-entree',canActivate: [AuthGuardService] , component: NewEntreeComponent},
+  {path: 'save-sortie/:id',canActivate: [AuthGuardService] , component: NewSortieComponent},
   {path: 'connexion', component: UserAuthComponent},
   {path: 'signup', component: UserInscComponent},
-  {path: 'entrees', component: EntreesComponent}
+  {path: 'entrees',canActivate: [AuthGuardService] , component: EntreesComponent},
+  {path: 'profile',canActivate: [AuthGuardService] , component: ProfileComponent}
 ];
 
 @NgModule({
