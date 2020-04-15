@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from './instances/user';
+import {BackendService} from "./backend.service";
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,9 @@ import { User } from './instances/user';
 export class UserService {
   private connectedUser = -1;
   private users: User[];
-  constructor() { }
+  constructor(private backend: BackendService) {
+    this.users = this.backend.getUsers();
+  }
 
   getConnectedIndex(): number {
     return this.connectedUser;
@@ -18,6 +21,7 @@ export class UserService {
     user.setId(id);
     user.setIdUser(this.getConnectedIndex());
     this.users.push(user);
+    this.backend
   }
 
   editUser(user: User) {

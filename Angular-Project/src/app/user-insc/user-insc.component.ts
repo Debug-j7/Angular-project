@@ -24,14 +24,13 @@ export class UserInscComponent implements OnInit {
   ngOnInit() {
     this.initForm();
   }
-
   initForm() {
     this.userForm = this.formBuilder.group({
       login: ['', Validators.required],
       full_name: ['', Validators.required],
       psw: ['', Validators.required],
       conf_psw: ['', Validators.required],
-      email: ['', Validators.required]
+      email: ['', Validators.email]
     });
   }
 
