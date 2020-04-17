@@ -1,0 +1,22 @@
+POST http://localhost:8080/poules
+Content-Type: application/json
+
+{
+  "nom": "Eric",
+  "date": "12/12/2019",
+  "quantite": 12,
+  "commande": 1,
+  "prix": 12.3
+}
+
+
+
+###
+
+GET http://localhost:8080/poules
+
+###
+
+GET http://localhost:8080/poules/search/findPouleByNom?nom=poules
+
+###
