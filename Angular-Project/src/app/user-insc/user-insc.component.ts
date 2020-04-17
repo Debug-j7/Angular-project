@@ -35,10 +35,10 @@ export class UserInscComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log("Debut de l'enregistrement");
     const values = this.userForm.value;
     const user = new User(values['full_name'], values['login'], values['psw'], values['email']);
     this.userService.saveUser(user);
-    console.log("Enregistrement reuissi");
     this.router.navigate(['/']);
   }
 }

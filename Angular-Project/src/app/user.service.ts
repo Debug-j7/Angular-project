@@ -9,6 +9,10 @@ export class UserService {
   private connectedUser = -1;
   private users: User[];
   constructor(private backend: BackendService) {
+    this.refreshDatas();
+  }
+
+  refreshDatas() {
     this.users = this.backend.getUsers();
   }
 
@@ -17,22 +21,18 @@ export class UserService {
   }
 
   saveUser(user: User) {
-    const id = this.generateId();
-    user.setId(id);
-    user.setIdUser(this.getConnectedIndex());
-    this.users.push(user);
-    this.backend
+    this.backend.createUser(user);
+    this.refreshDatas();
   }
 
   editUser(user: User) {
-    user.setIdUser(this.getConnectedIndex());
-    const id = this.users[this.connectedUser].getid();
-    user.setId(id||this.generateId());
-    this.users[this.connectedUser] = user;
+    this.backend.updateuser(user, this.connectedUser);
+    this.refreshDatas();
   }
 
   deleteUser() {
-    this.users.slice(this.connectedUser);
+    this.backend.deleteUser(this.connectedUser);
+    this.refreshDatas();
   }
 
   signIn(login: string, password: string): boolean {
@@ -57,8 +57,10 @@ export class UserService {
   }
 
   saveEntree(montant) {
-    const user = this.getConnectedUser();
+    let user = this.getConnectedUser();
     user.setSolde(user.getSolde() + montant);
+    this.backend.updateuser(user, this.connectedUser);
+    this.refreshDatas();
   }
 
   private existsId(id: number): boolean {
@@ -79,5 +81,4 @@ export class UserService {
       id++;
     }
   }
-
 }

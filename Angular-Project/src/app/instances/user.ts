@@ -5,7 +5,6 @@ export class User {
     private email: string|null;
     private solde: number;
     private id: number;
-    private idUser: number;
     private avatar: string;
 
     constructor(nomComplet: string, login: string, password: string, email?: string){
@@ -61,14 +60,6 @@ export class User {
 
     setId(id: number) {
         this.id = id;
-    }
-
-    getIdUser() {
-      return this.idUser;
-    }
-
-    setIdUser(idUser: number) {
-      this.idUser = idUser;
     }
 
     getAvatar(): string {

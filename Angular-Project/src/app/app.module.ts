@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -50,6 +51,7 @@ const appRoutes: Routes = [
     AppRoutingModule,
     ReactiveFormsModule,
     RouterModule.forChild(appRoutes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

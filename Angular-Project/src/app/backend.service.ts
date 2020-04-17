@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {User} from "./instances/user";
 import {Exercice} from "./instances/exercice";
 import {Entree} from "./instances/entree";
@@ -11,8 +11,12 @@ import {Sortie} from "./instances/sortie";
 export class BackendService{
   private key;
   private refresh;
+  headers = new HttpHeaders({
+    'Content-type': 'application/json'
+  });
   backendUrl = "http://localhost:8000";
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
 
   getUsers(){
     let users = [];
@@ -28,8 +32,11 @@ export class BackendService{
   }
 
   createUser(user: User){
+    user.setSolde(0);
+    user.setAvatar('');
     const nuser = JSON.stringify(user);
-    this.httpClient.post(this.getUserUrl(), nuser).subscribe(
+    console.log(nuser);
+    this.httpClient.post(this.getUserUrl(), nuser, {headers: this.headers}).subscribe(
       (datas) => {
         console.log("Enregistrement reussi");
         return true;
@@ -57,7 +64,7 @@ export class BackendService{
   updateuser(user: User, index: number) {
     const nuser = JSON.stringify(user);
     const nurl = this.getUserUrl() + index;
-    this.httpClient.put(nurl, nuser).subscribe(
+    this.httpClient.put(nurl, nuser, {headers: this.headers}).subscribe(
       (datas) => {
         console.log("Mise à jour reussie");
         return true;
